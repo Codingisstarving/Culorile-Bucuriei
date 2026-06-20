@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // --- BAZA DE DATE (Comună pentru tot site-ul) ---
+    // Baza de date
     const toateProdusele = [
         { logo: "cybexlogo.png", imagine: "produsul1.png", nume: "Cărucior 2 in 1 Cybex Priam V colecția Platinum 2026 Cozy Beige cadru Matt Black", pret: 26650, brand: "Cybex", culoare: "Beige" },
         { logo: "littledutchlogo.png", imagine: "produsul2.png", nume: "Tricicletă 4 în 1 cu bară de împingere - GREEN - Little Dutch", pret: 2850, brand: "Little Dutch", culoare: "Green" },
@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { logo: "cottonmoose.png", imagine: "produsul18.png", nume: "Geanta Quickebagr Black, Cottonmoose", pret: 1450, brand: "Cottonmoose", culoare: "Black" }
     ];
 
-    // --- FUNCTIE AJUTĂTOARE: Sincronizează inimile la încărcarea paginii (ex: Pagina Principală) ---
     function actualizeazaStareInimiVizuale() {
         let favorite = JSON.parse(localStorage.getItem('produse-favorite')) || [];
         document.querySelectorAll('.cartocika').forEach(card => {
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- LOGICA GLOBALĂ DROPDOWN ---
+    // Dropdown
     const dropdowns = document.querySelectorAll('.dropdown');
     if (dropdowns.length > 0) {
         dropdowns.forEach(dropdown => {
@@ -59,12 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // =========================================================================
-    // LOGICĂ GLOBALĂ: COȘ ȘI FAVORITE (CLICK DELEGATION PE TOT SITE-UL)
-    // =========================================================================
     document.addEventListener('click', function (eveniment) {
         
-        // 1. ADĂUGARE ÎN COȘ
+        // Adaugare in cos
         if (eveniment.target.classList.contains('incos')) {
             const card = eveniment.target.closest('.cartocika');
             if (!card) return;
@@ -100,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 2000);
         }
 
-        // 2. ADĂUGARE / SCOATERE FAVORITE (TOGGLE)
+        // Adaugare favorite
         const butonFavorit = eveniment.target.closest('.fbuton');
         if (butonFavorit) {
             const card = butonFavorit.closest('.cartocika');
@@ -126,8 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             localStorage.setItem('produse-favorite', JSON.stringify(favorite));
-
-            // Dacă suntem fix pe pagina de favorite, reîmprospătăm lista vizuală instant la eliminare
             if (document.querySelector('.fsterge')) {
                 afiseazaFavoritele();
             }
@@ -135,13 +129,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // =========================================================================
-    // ÎNCEPUT BLOC: DOAR PENTRU PAGINA DE CATALOG (catalog.html)
-    // =========================================================================
     const lip = document.querySelector('.listadeproduse');
     const butonStergeFavorite = document.querySelector('.fsterge');
-    
-    // Suntem pe catalog doar dacă există lista de produse și NU există butonul de ștergere favorite
+
     if (lip && !butonStergeFavorite) {
         const maxproduse = 16;
         let pgcurent = 1;
@@ -244,21 +234,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 lipNumere.appendChild(buton);
             }
         }
-        // --- FUNCȚIONALITATE: ASCULTĂTOR PENTRU FILTRUL DE PREȚ ---
         const filtruPret = document.getElementById('slider-pret');
         const afisajPret = document.getElementById('valoare-curenta-slider');
 
         if (filtruPret) {
             filtruPret.addEventListener('input', function () {
-                // 1. Actualizăm valoarea maximă din filtrul activ
                 filtreActive.pretMaxim = parseInt(this.value) || 26650;
-                
-                // 2. Actualizăm textul din interfață în format Moldovenesc (ex: 15 500 MDL)
                 if (afisajPret) {
                     afisajPret.innerText = `${filtreActive.pretMaxim.toLocaleString('ro-RO')} MDL`;
                 }
-                
-                // 3. Resetăm pagina și reafișăm produsele filtrate
                 reseteazaSiRandaza();
             });
         }
@@ -268,14 +252,8 @@ document.addEventListener("DOMContentLoaded", function () {
         addbuton();
     }
 
-
-    // =========================================================================
-    // ÎNCEPUT BLOC: DOAR PENTRU PAGINA DE FAVORITE (favorite.html)
-    // =========================================================================
     const butonStergeTotFavorite = document.querySelector('.fsterge');
     const containerFavorite = document.querySelector('.listadeproduse');
-
-    // Suntem pe pagina de favorite DOAR dacă există butonul dedicat de ștergere totală
     if (butonStergeTotFavorite && containerFavorite) {
         
         function afiseazaFavoritele() {
@@ -316,10 +294,6 @@ document.addEventListener("DOMContentLoaded", function () {
         afiseazaFavoritele();
     }
 
-
-    // =========================================================================
-    // ÎNCEPUT BLOC: DOAR PENTRU PAGINA DE COȘ (achitare.html)
-    // =========================================================================
     const containerCos = document.querySelector('.acosul');
     
     if (containerCos) {
@@ -360,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
             calculareaTotei();
         }
 
-        // --- 1. FUNCȚIA DE CALCULARE A LIVRĂRII (LOGICA NOUĂ) ---
+        // Livrare calcul
         function calculeazaLivrareDinUI(subtotal) {
             const butonActiv = document.querySelector('.odl .bales');
             if (!butonActiv) return 0;
@@ -368,13 +342,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const tipLivrare = butonActiv.innerText.trim().toLowerCase();
             const inputuriIntroducere = document.querySelectorAll('.alivrare .introducere');
             const localitate = inputuriIntroducere[0] ? inputuriIntroducere[0].value.trim().toLowerCase() : "";
-
-            // Ridicare din magazin
             if (tipLivrare.includes("magazin") || tipLivrare.includes("ridicare")) {
                 return 0;
             }
 
-            // Livrare în Chișinău
             if (tipLivrare.includes("chisinau")) {
                 if (localitate.includes("suburb") || localitate.includes("sat") || localitate.includes("comun")) {
                     return subtotal >= 2000 ? 0 : 150;
@@ -382,7 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return subtotal >= 1200 ? 0 : 100;
             }
 
-            // Livrare în Moldova
             if (tipLivrare.includes("moldova")) {
                 if (subtotal >= 7000) return 0;
                 if (localitate.includes("sat") || localitate.includes("comun")) {
@@ -394,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return 0;
         }
 
-        // --- 2. RECALCULAREA TOTALURILOR ---
+        // Total
         function calculareaTotei() {
             let cos = JSON.parse(localStorage.getItem('cos-cumparaturi')) || [];
             let subtotal = cos.reduce((sum, item) => sum + (item.pret * item.cantitate), 0);
@@ -414,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        // --- 3. EVENIMENTELE DE CLICK PE PRODUSE (ȘTERGERE, PLUS, MINUS) ---
+        // Sterge,plus,minus
         containerCos.addEventListener('click', function (e) {
             let cos = JSON.parse(localStorage.getItem('cos-cumparaturi')) || [];
             const card = e.target.closest('.cartocika');
@@ -440,7 +410,6 @@ document.addEventListener("DOMContentLoaded", function () {
             afiseazaCosul();
         });
 
-        // --- 4. EVENIMENTELE PENTRU BUTOANELE DE LIVRARE ȘI INPUT LOCALITATE ---
         const butoaneLivrare = document.querySelectorAll('.odl button');
         butoaneLivrare.forEach(buton => {
             buton.addEventListener('click', function () {
@@ -456,13 +425,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const butoaneAchitare = document.querySelectorAll('.optiuniachitare button');
 butoaneAchitare.forEach(buton => {
     buton.addEventListener('click', function () {
-        // Corecție: Iterăm prin butoaneAchitare ca să resetăm opțiunile de plată!
         butoaneAchitare.forEach(b1 => { 
             b1.classList.remove('bales');
             b1.classList.add('aopt');
         });
-        
-        // Activăm vizual butonul curent de achitare
         this.classList.remove('aopt');
         this.classList.add('bales');
     });
