@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="practica.css">
+</head>
+<body>
+    <div class="antet-shadow">
+        <div class="antet">
+        <div class="asus">
+            <div class="asstinga">
+                <a href="politica de livrare.html"><h5>Condiții de livrare</h5></a>
+                <a href="desprenoi.html"><h5>Despre Noi</h5></a>
+            </div>
+            <div class="asdreapta">
+                <h5>•(+373) 00 424 551</h5>
+                <h5>Astăzi lucrăm de la:10:00-20:00</h5>
+            </div>
+        </div>
+        <div class="ajios">
+            <div class="jstinga">
+                <a href="index.html">
+                    <button class="btnlogo">
+                        <img src="logo.png">
+                        <h4>Culorile Bucuriei</h4>
+                    </button>
+                </a>
+                <a href="catalog.html" class="bcatalog">
+                    <h4>Catalogul de produse</h4>
+                </a>
+            </div>
+            <div class="jcentru">
+                <input type="text" name="search" id="search">
+                <img src="lupa.png" class="miniimagini">
+            </div>
+            <div class="jdreapta">
+                <a href="favorite.html">
+                    <button>
+                        <img src="favorite1.png" class="miniimagini">
+                        <h5>Favorite</h5>
+                    </button>
+                </a>
+                <a href="achitare.html">
+                    <button>
+                        <img src="caruta.png" class="miniimagini">
+                        <h5>Coș</h5>
+                    </button>
+                </a>
+                <a href="logare.html">
+                    <button>
+                        <img src="logare.png" class="miniimagini">
+                        <h5>Logare</h5>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="ccuprins">
+        <div class="filtre">
+            <h4 class="fstinga fsageata">&lt;</h4>
+            <div class="flista">
+    <div class="felement dropdown">
+        <button class="dropbtn">Preț 0-26 650 MDL</button>
+        <div class="dropdown-content">
+            <label for="slider-pret" style="font-size: 13px; color: #666; margin-bottom: 8px; display: block;">
+                Alege prețul maxim:
+            </label>
+            <input type="range" id="slider-pret" min="640" max="26650" value="26650" step="50" style="width: 100%; cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: #333;">
+                <span>640 MDL</span>
+                <span id="valoare-curenta-slider" style="font-weight: bold; color: #6AAF63;">26 650 MDL</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="felement dropdown" id="dropdown-branduri">
+        <button class="dropbtn">Branduri</button>
+        <div class="dropdown-content" id="lista-branduri">
+            <label class="optiune-checkbox"><input type="checkbox" value="Chicco" class="chk-brand"> <span>Chicco</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Cottonmoose" class="chk-brand"> <span>Cottonmoose</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Cybex" class="chk-brand"> <span>Cybex</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Joie" class="chk-brand"> <span>Joie</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Little Dutch" class="chk-brand"> <span>Little Dutch</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Ortoto" class="chk-brand"> <span>Ortoto</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Scoot&Ride" class="chk-brand"> <span>Scoot&Ride</span></label>
+        </div>
+    </div>
+
+    <div class="felement dropdown" id="dropdown-culori">
+        <button class="dropbtn">Culoare</button>
+        <div class="dropdown-content" id="lista-culori">
+            <label class="optiune-checkbox"><input type="checkbox" value="Ash" class="chk-culoare"> <span>Ash</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Beige" class="chk-culoare"> <span>Beige</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Black" class="chk-culoare"> <span>Black</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Green" class="chk-culoare"> <span>Green</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Lemn" class="chk-culoare"> <span>Lemn</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Mix" class="chk-culoare"> <span>Mix</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Mocha" class="chk-culoare"> <span>Mocha</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Moongrey" class="chk-culoare"> <span>Moongrey</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Shale" class="chk-culoare"> <span>Shale</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="Transparent" class="chk-culoare"> <span>Transparent</span></label>
+            <label class="optiune-checkbox"><input type="checkbox" value="White" class="chk-culoare"> <span>White</span></label>
+        </div>
+    </div>
+</div>
+            <h4 class="fdreapta fsageata">&gt;</h4>
+        </div>
+        <div class="listadeproduse">
+            
+        </div>
+        <div class="paginile">
+            <button id="pag-inapoi">Precedenta</button>
+            <div id="pag-numere"></div>
+            <button id="pag-inainte">Urmatoare</button>
+        </div>
+    </div>
+
+    <div class="subsol">
+        <div class="subsol-continut"> 
+        <div class="ssus">
+            <div class="ssstinga">
+                <h5>Contactează-ne</h5>
+                <div class="retele">
+                    <button class="retea"><img src="flogo.png" class="miniimagini">Facebook</button>
+                    <button class="retea"><img src="ilogo.png" class="miniimagini">Instagram</button>
+                    <button class="retea"><img src="ylogo.png" class="miniimagini">YouTube</button>
+                    <button class="retea"><img src="wlogo.png" class="miniimagini">Whatsapp</button>
+                </div>
+            </div>
+            <div class="ssdreapta">
+                <h5>Telefon</h5>
+                <h5>(+373) 00 424 551</h5>
+            </div>
+        </div>
+        <hr>
+        <div class="smid">
+            <div class="smstinga">
+                <h5>Informatii</h5>
+                <div class="informatii">
+                    <button>Despre noi</button>
+                    <button>Conditii de livrare</button>
+                    <button>Politica de confidentialitate</button>
+                    <button>Politica de retur</button>
+                </div>
+            </div>
+            <div class="smdreapta">
+                <h5>Adresa noastra:</h5>
+                <h5>mun. Chisinau, str. Armeneasca 45A</h5>
+                <hr width="100%">
+                <h5>Luni - Sambata 10:00 - 19:00</h5>
+                <h5>Duminica 10:00 - 18:00</h5>
+            </div>
+        </div>
+        <hr>
+        <div class="sjios">
+            <div class="sjstinga">
+                <h5>© 2017-2026 ECOM</h5> 
+            </div>
+            <div class="sjmid">
+                <img src="masterlogo.png" class="slogo">
+                <img src="maiblogo.png" class="slogo">
+                <img src="visalogo.png" class="slogo">
+            </div>
+            <div class="sjdreapta">
+                <img src="ecomlogo.png" class="slogo">
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="practica.js"></script>
+</body>
+</html>
