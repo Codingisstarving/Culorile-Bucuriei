@@ -47,6 +47,11 @@ Pina aici este partea cu descriere si politica de livrare
 .icbox {
     margin-bottom: 20px;
 }
+.inreg {
+    &:hover {
+        cursor: pointer;
+    }
+}
 /*------------------------------------------------------------------------------------------
 Pina aici este partea cu inregistrare 
 --------------------------------------------------------------------------------------------*/
@@ -364,6 +369,10 @@ Pina aici e catalogul exclusiv
         &:hover {
             background-color: #222222;
         }
+    }
+    a {
+        margin-top: 10px;
+        color: #9c9c9c;
     }
 }
 .introducere {
